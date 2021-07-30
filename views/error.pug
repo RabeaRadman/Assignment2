@@ -1,0 +1,18 @@
+extends layout
+
+block content
+ main#main
+  // to handle in any mistype or wrong link in the address and will retuen 404 page
+  section#Locations.portfolio
+    .container
+      .section-title(data-aos='fade-in' data-aos-delay='100')
+        h1= message
+        h2= error.status
+        if error.status == 404
+          h1 Sorry, we could not find this page
+        else
+          .container
+          p #{error.stack}
+        if errors   
+          each error in errors 
+            p.alert.alert-danger= error

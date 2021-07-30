@@ -1,0 +1,10 @@
+{
+  "liveServer.settings.port": 5502,
+  "npm-scripts.showStartNotification": false,
+  "appService.zipIgnorePattern": [
+    "node_modules{,/**}",
+    ".vscode{,/**}"
+  ],
+  "appService.defaultWebAppToDeploy": "/subscriptions/3f951af2-bbd0-4791-a931-51ec57778e25/resourceGroups/Travel-Experts-website-Rabea/providers/Microsoft.Web/sites/TravelExpertsRabeaRadman",
+  "appService.deploySubpath": "."
+}

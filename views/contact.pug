@@ -1,0 +1,63 @@
+extends layout 
+
+block content
+    #content.site-content
+      section#primary.content-area
+        main#main.site-main
+          article#post-7.post-7.page.type-page.status-publish.hentry.entry
+            header.entry-header.responsive-max-width
+              h1.entry-title(style="padding-top: 50px;") Contact
+            .entry-content
+              
+              // ======= About Section =======
+
+              p(style="text-align:left;") Let’s talk 
+                img.emoji(draggable="false" role="img" alt="👋" src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/svg/1f44b.svg" scale="0")
+                | Don’t hesitate to reach out with the contact information below, or send a message using the form.
+              .wp-block-group.alignfull.has-background-background-color.has-background
+                div(class="wp-block-group__inner-container")
+                  .wp-block-spacer(style="height:36px;" aria-hidden="true")
+                  .wp-block-columns.alignwide.has-2-columns
+                    .wp-block-column
+                      h2.has-text-align-left Get in Touch
+                      .wp-block-jetpack-contact-info(itemprop="location" itemscope="" itemtype="http://schema.org/Organization")
+                        .wp-block-jetpack-address(itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress")
+                          div(itemprop="streetAddress" class="jetpack-address__address jetpack-address__address1") 555 5 Ave SW
+                          div
+                            span(itemprop="addressLocality" class="jetpack-address__city") Calgary
+                            | ,
+                            span(itemprop="addressRegion" class="jetpack-address__region")
+                            span(itemprop="postalCode" class="jetpack-address__postal") Alberta 
+                              br
+                              | T3P 0J9
+                          div(itemprop="addressCountry" class="jetpack-address__country") Canada
+                        .wp-block-jetpack-email
+                          a(itemprop="email" href="mailto:inquiries@travelexperts.com?subject=Re: Customer Inquiry") inquiries@travelexperts.com
+                        .wp-block-jetpack-phone
+                          span(itemprop="telephone")
+                            a(href="tel:555555-555") (403)-555-5555
+                    .wp-block-column
+                      h2.has-text-align-left Send Us a Message
+                      #contact-form-7
+                        
+                        //===Contact form=====//
+                        
+                        form.contact-form.commentsblock(action="/contact" method="post")
+                          .grunion-field-wrap.grunion-field-name-wrap
+                            label.grunion-field-label.name(for="g7-name") Name
+                              span (required)
+                            input#g7-name.name(type="text" name="Name" value="" required="" aria-required="true" placeholder="Enter your First & Last name")
+                          .grunion-field-wrap.grunion-field-email-wrap
+                            label.grunion-field-label.email(for="g7-email") Email
+                              span (required)
+                            input#g7-email.email(type="email" name="Email" value="" required="" aria-required="true" placeholder="Enter your email" style = "width:100%")
+                          .grunion-field-wrap.grunion-field-telephone-wrap
+                            label.grunion-field-label.telephone(for="g7-phone") Phone
+                            input#g7-phone.telephone(type="tel" name="Phone" value="" required="" placeholder="Enter your phone number" style = "width:100%" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}")
+                          .grunion-field-wrap.grunion-field-textarea-wrap
+                            label.grunion-field-label.textarea(for="contact-form-comment-g7-message") Message
+                              span (required)
+                            textarea#contact-form-comment-g7-message.textarea(name="Message" rows="20" required="" aria-required="true" placeholder="Enter your message here")
+                          p.contact-submit
+                            button.pushbutton-wide(type="submit") Submit
+                        //===End of Contact form=====//

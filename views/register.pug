@@ -1,0 +1,107 @@
+extends layout 
+
+block content
+    #content.site-content
+      section#primary.content-area
+        main#main.site-main
+          article#post-7.post-7.page.type-page.status-publish.hentry.entry
+            header.entry-header.responsive-max-width
+              h1.entry-title(style="padding-top: 50px;") Account Registeration
+            .entry-content
+              p(style="padding-top: 20;padding-bottom: 50;padding-right: 50;padding-left: 50;margin-left: 285px;margin-right: 285px;")
+              p Please fill in this form to create an account.
+              hr
+              
+              // =====Start of Entry and registration from===== //
+
+              form(action="/thankyou" method="POST" autocomplete="on")
+                .form-group
+                 label(for='username') Username:
+                 input#email.form-control(type='text' placeholder='Enter username' name='username' required='' value=username)
+                 br
+                .form-group
+                 label(for='fname') First Name:
+                 input#fname.form-control(type='text' name='fname' placeholder='First name' required='' value=fname)   
+                 br   
+                .form-group
+                 label(for='lname') Last Name:
+                 input#lname.form-control(type='text' name='lname' placeholder='Last name' required='' value=lname)
+                 br          
+                .form-group
+                 label(for='email') Email:
+                 input#email.form-control(type='email' placeholder='Enter email' name='email' required='' onmouseover='HoverForm(this)' onmouseout='HoverFormExit(this)' value=email style = "width:100%")
+                 small.form-text.text-muted Your email will not be shared with anyone
+                 br
+                 br
+                .form-group
+                 label(for='text') Password:
+                 input#password.form-control(type='password' placeholder='Enter password' name='password' required='' )
+                 br
+                .form-group
+                 label(for="phone") Phone:
+                 input#phone.form-control(type="tel" placeholder="Enter Phone Number 123-456-1234" name="phone" 
+                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required title="Please use format 000-000-0000" onmouseover="HoverForm(this)" onmouseout="HoverFormExit(this)" style = "width:100%")
+                 small.form-text.text-muted Please use format 000-000-0000
+                 br
+                 br
+                .form-group
+                 label(for='Address') Street Address:
+                 input#Address.form-control(type='text' name='Address' placeholder='Street Address' required='' value=Address)
+                 br
+                .form-group
+                 label(for='City') City:
+                 input#City.form-control(type='text' name='City' placeholder='City' required='' value=City)
+                 br
+                .form-group
+                  label(for='Province') Province: 
+                  select#Province.form-control.select-border(name='Province' required)
+                    option(value="" disabled='' selected="" hidden='' required="") Select ... 
+                    option AB
+                    option BC
+                    option MB
+                    option NB
+                    option NL
+                    option NT
+                    option NS
+                    option NU
+                    option ON
+                    option PE
+                    option QC
+                    option SK
+                    option YT
+                br
+                .form-group
+                  label(for="Postal_Code") Postal Code:
+                  input.form-control(type="text" id="Postal_Code" name="Postal_Code" placeholder="A1A 1A1" pattern="[A-Z][0-9][A-Z] [0-9][A-Z][0-9]" onmouseover="HoverForm(this)" onmouseout="HoverFormExit(this)")
+                  small.form-text.text-muted Please use format A1A 1A1
+                //-   .form-group
+                //-     label(for='Information') Additonal Information:
+                //-     br
+                //-     textarea#Information.form-control(name='Information' placeholder='Add any additional Informaton')
+                br
+                br
+                
+                hr
+                p By creating an account you agree to our 
+                  a(href="/terms") Terms &amp; Privacy
+                  | .
+                button.registerbtn(type="submit" onclick="return mySubmit()") Submit
+                button.registerbtn(type="reset" onclick="return myReset()") Reset
+                .container.signin
+                    p Already have an account? 
+                    a(href="/signin") Sign in
+                    | .
+                br
+              script.
+                function HoverForm(element) {
+                    element.nextElementSibling.style.display = 'inline';
+                    }
+                function HoverFormExit(element) {
+                    element.nextElementSibling.style.display = 'none';
+                    }
+                function mySubmit() {
+                    return window.confirm("Are you sure you want to submit the form?")
+                    }
+                function myReset() {
+                    return window.confirm("Are you sure you want to reset the form?")
+                    }

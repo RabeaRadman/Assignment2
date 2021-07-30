@@ -1,0 +1,94 @@
+extends layout 
+
+block content
+    script.
+      var imgIndex = 0;
+      
+      //====Set up Imgs====//
+      var imgs = Array();
+      for (let i = 0; i < 3; i++)
+      {
+      imgs[i] = new Image();
+      };
+      imgs[0].src = "https://exforddemo.files.wordpress.com/2019/08/ancient-architecture-building-1010657.jpg" ;
+      imgs[1].src = "https://exforddemo.files.wordpress.com/2019/08/adults-arabian-arabic-2239422-1.jpg?w=750" ;
+      imgs[2].src = "https://exforddemo.files.wordpress.com/2019/08/cris-tagupa-9zxhur5acwm-unsplash.jpg" ;
+      imgs[0].description = "Ancient buildings,Santorini, Greece";
+      imgs[1].description = "Arabian men riding horses, Qatar";
+      imgs[2].description = "El Nido beautiful beach, Philippines";
+      imgs[0].link = "https://exforddemo.files.wordpress.com/2019/08/ancient-architecture-building-1010657.jpg";
+      imgs[1].link = "https://exforddemo.files.wordpress.com/2019/08/adults-arabian-arabic-2239422-1.jpg?w=750";
+      imgs[2].link = "https://exforddemo.files.wordpress.com/2019/08/cris-tagupa-9zxhur5acwm-unsplash.jpg";
+      
+      // ====Load Pictures=====//
+      function increment() {
+      imgIndex++;
+      if (imgIndex % imgs.length == 0) {
+      imgIndex = 0;
+      };
+      }
+      function decrement() {
+      --imgIndex;
+      if (imgIndex == -1) {
+      imgIndex = imgs.length-1;
+      };
+      }
+      function updateImg() {
+      activeImg.src = imgs[imgIndex].src;
+      activeImg.description = imgs[imgIndex].description;
+      document.getElementById('img-caption').innerHTML = imgs[imgIndex].description;
+      }
+      function OpenCloseWindow() {
+      // set x to opened window
+      var x = window.open(imgs[imgIndex].link,'_blank');
+      // time out window and close it
+      setTimeout( ()=> { x.close();}, 3000);
+      }
+      
+      var pos = 0;
+      var posX = 0;
+      var posY = 0;
+      var spd = [Math.floor(Math.random()*5)+1,Math.floor(Math.random()*5)+1];
+      
+      // function MoveImg() {
+      //     elem = document.getElementsByClassName("img-move-around")[0];
+      //     let id = setInterval(frame, 10);
+      //     }
+      
+      function frame() {
+      if (posX > 600 || posX < -10 ) {
+      spd[0] = spd[0] * -1;}
+      
+      if (posY > 1000 || posY < -10 ) {
+      spd[1] = spd[1] * -1;}
+      
+      posX += spd[0];
+      posY += spd[1]; 
+      elem.style.top = posX + spd[0] + "px"; 
+      elem.style.left = posY + spd[1] + "px"; 
+      }
+      
+      function reverse() {
+      spd = [-1 *(Math.floor(Math.random()*5)+1), -1 * (Math.floor(Math.random()*5)+1)];
+      }
+    section
+      .container1(position='relative')
+        img.imgbox(src='https://exforddemo.files.wordpress.com/2019/08/ancient-architecture-building-1010657.jpg' name='activeImg')
+        a#img-link(onclick='OpenCloseWindow()')
+          #img-caption.carousel-caption.d-none.d-md-block
+        script.
+          //Assignment Requirements, automatically cycle pictures
+          updateImg();
+          setInterval(()=> {increment();updateImg();}, 5000);
+       
+        // ==== Buttons to cycle Photos =====//
+        
+        button.carousel-control-prev(type='button' style: onClick='increment(); updateImg();')
+          span.carousel-control-prev-icon(aria-hidden='true') 
+          span.visually-hidden Previous 
+        |  &nbsp;
+        button.carousel-control-next(type='button' onClick='decrement(); updateImg();')
+          span.carousel-control-next-icon(aria-hidden='true')
+          span.visually-hidden Next 
+
+
